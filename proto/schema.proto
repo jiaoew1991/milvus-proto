@@ -28,6 +28,8 @@ enum DataType {
 
   String = 20;
   VarChar = 21; // variable-length strings with a specified maximum length
+  List = 22;
+  Json = 23;
 
   BinaryVector = 100;
   FloatVector = 101;
@@ -52,7 +54,8 @@ message FieldSchema {
   repeated common.KeyValuePair type_params = 6;
   repeated common.KeyValuePair index_params = 7;
   bool autoID = 8;
-  FieldState state = 9; // To keep compatible with older version, the default state is `Created`.
+  FieldState state = 9; // To keep compatible with older version, the default
+                        // state is `Created`.
 }
 
 /**
@@ -65,34 +68,20 @@ message CollectionSchema {
   repeated FieldSchema fields = 4;
 }
 
-message BoolArray {
-  repeated bool data = 1;
-}
+message BoolArray { repeated bool data = 1; }
 
-message IntArray {
-  repeated int32 data = 1;
-}
+message IntArray { repeated int32 data = 1; }
 
-message LongArray {
-  repeated int64 data = 1;
-}
+message LongArray { repeated int64 data = 1; }
 
-message FloatArray {
-  repeated float data = 1;
-}
+message FloatArray { repeated float data = 1; }
 
-message DoubleArray {
-  repeated double data = 1;
-}
+message DoubleArray { repeated double data = 1; }
 
 // For special fields such as bigdecimal, array...
-message BytesArray {
-  repeated bytes data = 1;
-}
+message BytesArray { repeated bytes data = 1; }
 
-message StringArray {
-  repeated string data = 1;
-}
+message StringArray { repeated string data = 1; }
 
 message ScalarField {
   oneof data {
@@ -139,4 +128,3 @@ message SearchResultData {
   IDs ids = 5;
   repeated int64 topks = 6;
 }
-
